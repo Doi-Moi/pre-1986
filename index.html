@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kinh tế Việt Nam 1975–1986 · Đường tới Đổi Mới</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3eada; --paper2:#ece0c7; --paper3:#e4d6b8;
+    --ink:#221a10; --ink2:#4d4030; --ink3:#7a6a52;
+    --line:#cbb98f; --line2:#dccba0;
+    --accent:#a81e23; --accent-ink:#7a1418;
+    --shadow:0 8px 28px rgba(60,40,12,.18);
+    --shadow-lg:0 18px 50px rgba(50,30,8,.30);
+    --c0:#a81e23; --c1:#bd5f1a; --c2:#a8851f; --c3:#5f7a26;
+    --c4:#1f7a64; --c5:#236184; --c6:#3f4490; --c7:#7a2f72; --c8:#157a4d;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Be Vietnam Pro','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(900px 500px at 12% -8%, rgba(168,30,35,.06), transparent 60%),
+      radial-gradient(800px 500px at 96% 4%, rgba(35,97,132,.06), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(120,90,40,.022) 0 2px, transparent 2px 4px),
+      var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  /* paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  header.masthead{
+    position:relative;z-index:2;padding:34px clamp(18px,4vw,56px) 14px;
+    border-bottom:3px double var(--line);
+  }
+  .kicker{
+    font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);
+    font-weight:700;margin:0 0 8px;
+  }
+  h1.title{
+    font-family:'Playfair Display',Georgia,serif;font-weight:900;
+    font-size:clamp(2rem,5.4vw,4.1rem);line-height:.98;margin:0;letter-spacing:-.01em;color:var(--ink);
+  }
+  h1.title em{color:var(--accent);font-style:italic;}
+  .subtitle{
+    margin:14px 0 0;max-width:64ch;color:var(--ink2);font-size:clamp(.95rem,1.4vw,1.08rem);font-weight:400;
+  }
+  .source-line{margin:10px 0 0;font-size:.78rem;color:var(--ink3);font-style:italic;}
+
+  /* control bar */
+  .controls{
+    position:sticky;top:0;z-index:30;
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+    padding:12px clamp(14px,4vw,40px);
+    background:linear-gradient(var(--paper2),var(--paper2)) padding-box;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 18px rgba(60,40,12,.10);
+    backdrop-filter:blur(2px);
+  }
+  .ctrl-group{display:flex;align-items:center;gap:8px;}
+  .ctrl-label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);font-weight:600;}
+  .btn{
+    font-family:inherit;font-size:.86rem;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink2);
+    padding:7px 13px;border-radius:999px;transition:.18s;line-height:1;white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+  .btn.round{width:38px;height:38px;padding:0;font-size:1.25rem;display:grid;place-items:center;}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn.primary:hover{background:var(--accent-ink);color:#fff;}
+  input[type=range]{accent-color:var(--accent);width:150px;cursor:pointer;}
+  .zoom-readout{font-size:.78rem;color:var(--ink3);min-width:42px;text-align:right;font-variant-numeric:tabular-nums;}
+
+  /* era legend chips */
+  .legend{display:flex;flex-wrap:wrap;gap:7px;padding:12px clamp(14px,4vw,40px) 2px;position:relative;z-index:2;}
+  .chip{
+    cursor:pointer;border:1px solid var(--line);background:var(--paper);
+    padding:6px 11px 6px 9px;border-radius:999px;font-size:.78rem;font-weight:600;color:var(--ink2);
+    display:flex;align-items:center;gap:7px;transition:.16s;
+  }
+  .chip:hover{transform:translateY(-1px);box-shadow:var(--shadow);}
+  .chip .dot{width:11px;height:11px;border-radius:50%;flex:none;}
+
+  .hint{font-size:.76rem;color:var(--ink3);padding:8px clamp(14px,4vw,40px) 0;position:relative;z-index:2;}
+
+  /* timeline viewport */
+  .tl-viewport{
+    position:relative;z-index:1;overflow-x:auto;overflow-y:hidden;
+    padding:18px 0 26px;cursor:grab;
+    scrollbar-color:var(--line) transparent;
+  }
+  .tl-viewport.drag{cursor:grabbing;}
+  .tl-viewport::-webkit-scrollbar{height:12px;}
+  .tl-viewport::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px;border:3px solid var(--paper);}
+
+  .tl-canvas{position:relative;height:560px;margin:0 40px;transition:width .25s ease;}
+
+  /* era bands */
+  .era-band{
+    position:absolute;top:248px;height:64px;border-radius:9px;
+    opacity:.16;mix-blend-mode:multiply;pointer-events:none;
+  }
+  .era-tag{
+    position:absolute;top:252px;
+    font-size:.7rem;font-weight:700;letter-spacing:.04em;color:#fff;
+    padding:3px 9px;border-radius:6px;white-space:nowrap;box-shadow:var(--shadow);z-index:1;
+  }
+
+  /* spine */
+  .spine{position:absolute;top:279px;height:4px;left:0;right:0;
+    background:linear-gradient(90deg,var(--c0),var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c6),var(--c7),var(--c8));
+    border-radius:3px;opacity:.85;}
+  .axis-tick{position:absolute;top:268px;width:1px;height:26px;background:var(--line);transform:translateX(-.5px);}
+  .axis-year{position:absolute;top:228px;transform:translateX(-50%);font-family:'Playfair Display',serif;
+    font-weight:700;font-size:.92rem;color:var(--ink3);}
+
+  /* event node */
+  .ev{position:absolute;width:172px;transform:translateX(-50%);
+      transition:opacity .42s ease, transform .42s cubic-bezier(.2,.8,.3,1.1);}
+  .ev.lod-hidden{opacity:0;transform:translateX(-50%) scale(.45);pointer-events:none;}
+  .ev .star{position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+      font-size:.6rem;font-weight:700;letter-spacing:.06em;color:#fff;
+      padding:2px 9px;border-radius:999px;white-space:nowrap;z-index:4;box-shadow:var(--shadow);}
+  .ev.tier1 .dot{width:22px;height:22px;border-width:4px;
+      box-shadow:0 0 0 4px var(--paper),0 0 0 8px rgba(168,30,35,.14);}
+  .ev.tier1 .card{border-width:2px;}
+  .ev .stem{position:absolute;left:50%;width:2px;background:var(--line);transform:translateX(-1px);}
+  .ev .dot{
+    position:absolute;left:50%;width:17px;height:17px;border-radius:50%;
+    transform:translate(-50%,-50%);background:var(--paper);border:3px solid var(--c0);
+    box-shadow:0 0 0 4px var(--paper);cursor:pointer;transition:.18s;z-index:3;
+  }
+  .ev .dot:hover{transform:translate(-50%,-50%) scale(1.25);}
+  .ev .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:11px;
+    padding:11px 12px 12px;cursor:pointer;transition:transform .18s, box-shadow .18s, border-color .18s;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .ev .card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:11px 0 0 11px;background:var(--c0);}
+  .ev .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--c0);}
+  .ev .ic{width:30px;height:30px;color:var(--c0);margin-bottom:7px;}
+  .ev .date{font-size:.68rem;font-weight:700;letter-spacing:.05em;color:var(--c0);text-transform:uppercase;}
+  .ev .etitle{font-size:.86rem;font-weight:600;line-height:1.22;margin:3px 0 0;color:var(--ink);}
+  .ev:hover{z-index:20;}
+  .ev .tap{font-size:.66rem;color:var(--ink3);margin-top:6px;display:flex;align-items:center;gap:4px;}
+
+  /* placement above/below */
+  .ev.up{ } .ev.down{ }
+
+  /* modal */
+  .overlay{
+    position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+    background:rgba(34,20,8,.55);backdrop-filter:blur(4px);padding:20px;
+  }
+  .overlay.open{display:flex;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:
+      repeating-linear-gradient(0deg, rgba(120,90,40,.02) 0 2px, transparent 2px 4px),
+      var(--paper);
+    width:min(720px,100%);max-height:88vh;overflow-y:auto;border-radius:16px;
+    box-shadow:var(--shadow-lg);border:1px solid var(--line);position:relative;
+    animation:pop .28s cubic-bezier(.2,.9,.3,1.2);
+  }
+  @keyframes pop{from{transform:translateY(16px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+  .modal-head{padding:22px 26px 16px;border-bottom:1px solid var(--line);position:relative;}
+  .modal-band{height:6px;border-radius:16px 16px 0 0;}
+  .era-badge{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;color:#fff;}
+  .modal h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(1.3rem,3.2vw,1.85rem);
+    line-height:1.08;margin:12px 0 4px;color:var(--ink);}
+  .modal .mdate{font-size:.84rem;font-weight:600;color:var(--ink3);letter-spacing:.04em;}
+  .closeb{position:absolute;top:14px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+    background:var(--paper);cursor:pointer;font-size:1.3rem;color:var(--ink2);display:grid;place-items:center;transition:.16s;z-index:2;}
+  .closeb:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:rotate(90deg);}
+
+  .media{display:flex;gap:16px;align-items:center;padding:18px 26px 4px;}
+  .media .bigicon{width:64px;height:64px;flex:none;border-radius:14px;display:grid;place-items:center;color:#fff;box-shadow:var(--shadow);}
+  .media .bigicon svg{width:36px;height:36px;}
+  .media .photo{width:120px;height:90px;border-radius:10px;object-fit:cover;border:1px solid var(--line);flex:none;display:none;}
+  .media .photo.show{display:block;}
+
+  .blocks{padding:14px 26px 6px;}
+  .block{margin:0 0 16px;}
+  .block h3{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    color:var(--accent);margin:0 0 5px;display:flex;align-items:center;gap:7px;}
+  .block h3 .bar{width:18px;height:2px;background:var(--accent);}
+  .block p{margin:0;font-size:.96rem;line-height:1.55;color:var(--ink2);}
+  .people{padding:4px 26px 24px;}
+  .people h3{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink3);margin:0 0 8px;}
+  .people .tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .ptag{font-size:.8rem;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--paper3);
+    border:1px solid var(--line);color:var(--ink2);}
+  .modal-nav{display:flex;justify-content:space-between;gap:10px;padding:0 26px 24px;}
+
+  footer{position:relative;z-index:2;padding:30px clamp(18px,4vw,56px) 60px;border-top:3px double var(--line);margin-top:14px;}
+  footer h4{font-family:'Playfair Display',serif;font-size:1.15rem;margin:0 0 8px;color:var(--ink);}
+  footer p{font-size:.82rem;line-height:1.6;color:var(--ink3);max-width:90ch;margin:0 0 8px;}
+  footer .src{font-style:italic;}
+
+  @media (max-width:640px){
+    .ev{width:150px;}
+    input[type=range]{width:110px;}
+    .media{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <h1 class="title">Kinh tế Việt Nam 1975–1986<br><em>Đường tới Đổi Mới</em></h1>
+  <p class="subtitle">Dòng thời gian tương tác về quá trình phát triển kinh tế – xã hội, tư duy định hình hệ thống, và những tác động trong–ngoài dẫn tới đường lối Đổi Mới tại Đại hội VI (12/1986). Mỗi sự kiện được tóm lược theo năm chiều: hoàn cảnh, nguyên nhân/tư duy, chính sách/quyết định, hậu quả, và các nhân vật chính.</p>
+  <p class="source-line">Tổng hợp từ: Đặng Phong; Võ Nhân Trí; Trần Văn Thọ et al.; Phạm Minh Chính & Vương Quân Hoàng; Huy Đức; Kimura; Leung & Vo; Fforde & de Vylder.</p>
+</header>
+
+<div class="controls">
+  <div class="ctrl-group">
+    <span class="ctrl-label">Thu phóng</span>
+    <button class="btn round" id="zoomOut" title="Thu nhỏ">−</button>
+    <input type="range" id="zoomSlider" min="0" max="100" value="22" />
+    <button class="btn round" id="zoomIn" title="Phóng to">+</button>
+    <span class="zoom-readout" id="zoomReadout">1.0×</span>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Mức chi tiết</span>
+    <span class="zoom-readout" id="lodReadout" style="min-width:78px;text-align:left;font-weight:600">Mốc chính</span>
+  </div>
+  <div class="ctrl-group">
+    <button class="btn primary" id="fitBtn">⤢ Toàn cảnh</button>
+    <button class="btn" id="prevEra">‹ Giai đoạn trước</button>
+    <button class="btn" id="nextEra">Giai đoạn sau ›</button>
+  </div>
+</div>
+
+<div class="legend" id="legend"></div>
+<p class="hint">💡 <strong>Khi thu nhỏ, chỉ các mốc lớn nhất (★ Mốc chính) hiển thị; phóng to dần thì các sự kiện chi tiết hơn lần lượt xuất hiện.</strong> · <strong>Kéo</strong> để di chuyển ngang · <strong>cuộn / Ctrl+cuộn</strong> hoặc thanh trượt để thu phóng · <strong>nhấp nút giai đoạn</strong> để phóng vào từng thời kỳ · <strong>nhấp vào mỗi sự kiện</strong> để xem chi tiết · phím <strong>← →</strong> chuyển sự kiện, <strong>Esc</strong> đóng.</p>
+
+<div class="tl-viewport" id="viewport">
+  <div class="tl-canvas" id="canvas"></div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="modal-band" id="mBand"></div>
+    <button class="closeb" id="closeBtn" title="Đóng (Esc)">×</button>
+    <div class="modal-head">
+      <span class="era-badge" id="mEra"></span>
+      <h2 id="mTitle"></h2>
+      <div class="mdate" id="mDate"></div>
+    </div>
+    <div class="media">
+      <div class="bigicon" id="mIcon"></div>
+      <img class="photo" id="mPhoto" alt="" />
+    </div>
+    <div class="blocks">
+      <div class="block"><h3><span class="bar"></span>Hoàn cảnh</h3><p id="mCtx"></p></div>
+      <div class="block"><h3><span class="bar"></span>Nguyên nhân &amp; tư duy</h3><p id="mCause"></p></div>
+      <div class="block"><h3><span class="bar"></span>Chính sách / Quyết định</h3><p id="mDec"></p></div>
+      <div class="block"><h3><span class="bar"></span>Hậu quả / Kết quả</h3><p id="mRes"></p></div>
+    </div>
+    <div class="people"><h3>Nhân vật chính</h3><div class="tags" id="mPeople"></div></div>
+    <div class="modal-nav">
+      <button class="btn" id="mPrev">‹ Sự kiện trước</button>
+      <button class="btn" id="mNext">Sự kiện sau ›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ----------  DỮ LIỆU  ---------- */
+const ERAS = [
+  {name:"1975 · Tiếp quản & \"Bắc hóa\"", short:"1975", color:"var(--c0)", hex:"#a81e23", span:[1975.40,1976.00]},
+  {name:"1976 · Thống nhất & Đại hội IV", short:"1976", color:"var(--c1)", hex:"#bd5f1a", span:[1976.00,1977.05]},
+  {name:"1977–78 · Cải tạo toàn diện & ngả về Liên Xô", short:"1977–78", color:"var(--c2)", hex:"#a8851f", span:[1977.05,1979.00]},
+  {name:"1979 · Năm bản lề", short:"1979", color:"var(--c3)", hex:"#5f7a26", span:[1979.00,1980.30]},
+  {name:"1980–81 · Khoán 100 & xé rào", short:"1980–81", color:"var(--c4)", hex:"#1f7a64", span:[1980.30,1982.00]},
+  {name:"1982 · Đại hội V", short:"1982", color:"var(--c5)", hex:"#236184", span:[1982.00,1983.30]},
+  {name:"1983–84 · Tư duy đổi mới hình thành", short:"1983–84", color:"var(--c6)", hex:"#3f4490", span:[1983.30,1985.20]},
+  {name:"1985 · Giá–Lương–Tiền", short:"1985", color:"var(--c7)", hex:"#7a2f72", span:[1985.20,1986.30]},
+  {name:"1986 · Đổi Mới", short:"1986", color:"var(--c8)", hex:"#157a4d", span:[1986.30,1987.00]},
+];
+
+/* SVG icon library (stroke = currentColor) */
+const ICONS = {
+  doc:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h7M10 17h7"/>',
+  money:'<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9v.01M18 15v.01"/>',
+  factory:'<path d="M3 21V10l6 4V10l6 4V6l6 3v12z"/><path d="M7 21v-4M12 21v-4M17 21v-4"/>',
+  flag:'<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>',
+  congress:'<path d="M3 21h18"/><path d="M5 21V10M19 21V10M9 21v-7M15 21v-7"/><path d="M3 10l9-6 9 6z"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  treaty:'<path d="M3 12l4-2 5 3 5-3 4 2"/><path d="M8 13l3 3 2-2 3 3"/><path d="M3 12V7M21 12V7"/>',
+  war:'<path d="M4 20L20 4"/><path d="M14 4h6v6"/><path d="M4 14l6 6"/><path d="M2 12l4-4"/>',
+  bulb:'<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/>',
+  rice:'<path d="M12 21V9"/><path d="M12 9c0-3-2-5-5-6 0 3 2 5 5 6z"/><path d="M12 9c0-3 2-5 5-6 0 3-2 5-5 6z"/><path d="M12 13c0-2-2-4-4-4 0 2 2 4 4 4z"/><path d="M12 13c0-2 2-4 4-4 0 2-2 4-4 4z"/>',
+  scale:'<path d="M12 3v18M5 21h14"/><path d="M12 6l-6 2 6-2 6 2-6-2"/><path d="M3 12a3 3 0 0 0 6 0M15 12a3 3 0 0 0 6 0"/>',
+  people:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M15 20c0-2 1.5-3.5 4-3.5s2 1.5 2 3.5"/>',
+  seize:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4"/>',
+  portrait:'<rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="2.6"/><path d="M7.5 18c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0"/><path d="M12 17v4M9 21h6"/>'
+};
+
+const EVENTS = [
+  {id:"e01",era:0,year:1975.54,up:true,icon:"doc",date:"13/8/1975",title:"Hội nghị TƯ 24: đưa cả nước \"tiến nhanh lên CNXH\"",
+   ctx:"Sau 30/4/1975, miền Nam là nền kinh tế thị trường năng động; miền Bắc \"tàn tạ\" sau gần hai thập niên xây dựng XHCN. Nội bộ lãnh đạo từng băn khoăn: đưa mô hình miền Bắc \"vào miền Nam thì sai lắm\".",
+   cause:"Áp lực ý thức hệ thắng thế. Lê Duẩn \"chỉ băn khoăn đúng một tuần\"; lợi ích giai cấp được coi là mục tiêu quan trọng nhất. Quan điểm: dùng ý thức (quan hệ sản xuất XHCN) để cải tạo thực tiễn.",
+   dec:"Khẳng định thống nhất phải gắn liền CNXH cả về nội dung chính trị lẫn kinh tế; xác định nhiệm vụ cấp bách là sắp xếp việc làm cho ~3 triệu người, đưa 1,5–2 triệu dân thành thị về nông thôn.",
+   res:"Mở đường áp nguyên xi mô hình miền Bắc lên cả nước; chấm dứt khả năng để miền Nam giữ thời kỳ quá độ nhiều thành phần kinh tế. Khái niệm thận trọng \"bước đi ban đầu\" bị gạt bỏ.",
+   people:["Lê Duẩn","Trường Chinh","Lê Đức Thọ","Phạm Hùng","Nguyễn Văn Linh"]},
+
+  {id:"e02",era:0,year:1975.66,up:false,icon:"people",date:"Cuối 8/1975",title:"Chính sách Kinh tế Mới",
+   ctx:"Thành thị miền Nam thừa lao động phi nông nghiệp sau khi bộ máy cũ sụp đổ; chính quyền coi \"nền kinh tế do Mỹ để lại chỉ là phồn vinh giả tạo\".",
+   cause:"Chủ trương \"phân bố lại lực lượng lao động\", giảm dân thành thị và mở rộng diện tích canh tác.",
+   dec:"Đưa dân thành phố \"về quê lập nghiệp\", xây dựng các vùng kinh tế mới (Bình Phước, Tây Ninh, Sóc Trăng…); mục tiêu 1,5 triệu người.",
+   res:"Nhiều vùng kinh tế mới thất bại vì thiếu hạ tầng; một bộ phận dân bỏ về thành phố; góp phần vào bất ổn xã hội và làn sóng vượt biên.",
+   people:["Bộ Chính trị","Thành ủy Sài Gòn–Gia Định"]},
+
+  {id:"e03",era:0,year:1975.72,up:true,icon:"seize",date:"9/1975",title:"Chiến dịch X-2: đánh tư sản mại bản",
+   ctx:"Giá hàng thiết yếu (bột ngọt, muối, phụ tùng) tăng vọt tháng 8–9/1975; chính quyền quy cho \"trùm gian thương đầu cơ\".",
+   cause:"Quan điểm \"giai cấp tư sản là đối tượng của cách mạng\" (Nguyễn Văn Linh chủ trì, đòi \"thanh toán hết giai cấp tư sản\").",
+   dec:"Bắt giữ, kiểm kê, tịch thu tài sản (vàng, kim cương, ngoại tệ, hàng hóa) của các nhà tư sản lớn, tập trung vào người Hoa ở Chợ Lớn.",
+   res:"Triệt tiêu tầng lớp thương nhân điều phối lưu thông; gây hoảng loạn; một bộ phận bỏ trốn.",
+   people:["Nguyễn Văn Linh","Mai Chí Thọ","Phạm Hùng","Nguyễn Văn Trân"]},
+
+  {id:"e04",era:0,year:1975.79,up:false,icon:"money",date:"22–23/9/1975",title:"Đổi tiền lần 1 ở miền Nam (Chiến dịch X-3)",
+   ctx:"Tiếp nối X-2, nhằm \"giáng tiếp những đòn mới vào giai cấp tư sản\". Trước đó đã đình chỉ 16 ngân hàng tư nhân (28/8) và tuyên bố công khố phiếu vô giá trị (3/9).",
+   cause:"Ba yêu cầu: thiết lập chế độ tiền tệ mới; ngăn tư sản thao túng thị trường và tước \"phương tiện của gián điệp\"; đẩy lùi lạm phát.",
+   dec:"500 đồng Sài Gòn cũ = 1 đồng Ngân hàng Việt Nam; mỗi hộ chỉ được đổi tối đa 100.000 đồng cũ, phần vượt phải nộp.",
+   res:"Phần lớn tiền mặt của dân \"trở thành giấy lộn\"; mất mát lan ra toàn dân chứ không chỉ tư sản; niềm tin xã hội sứt mẻ. Khởi đầu chuỗi ba cú đổi tiền gây tổn thương (1975 · 1978 · 1985).",
+   people:["Trung ương Cục","Chính phủ Cách mạng Lâm thời"]},
+
+  {id:"e05",era:0,year:1975.91,up:true,icon:"flag",date:"15–21/11/1975",title:"Hội nghị Hiệp thương Thống nhất",
+   ctx:"Khép lại tiến trình \"Bắc hóa\" thể chế. Một số thành viên Mặt trận đề nghị có thời gian quá độ nhưng tiếng nói rất hạn chế.",
+   cause:"Trường Chinh dùng \"phép biện chứng\": \"không nhất thiết phải chờ thực tiễn phù hợp mới thống nhất\".",
+   dec:"Thống nhất trên thực tế là áp mô hình miền Bắc lên cả nước.",
+   res:"Nhà báo Pháp Jean Lacouture chơi chữ \"nordmalisation\" (Bắc hóa) thay cho \"normalisation\".",
+   people:["Trường Chinh","Phạm Hùng","Nguyễn Hữu Thọ"]},
+
+  {id:"e06",era:1,year:1976.73,up:true,icon:"doc",date:"25/9/1976",title:"Tuyên bố cải tạo công thương nghiệp tư doanh miền Nam",
+   ctx:"Phổ biến chính thức 1/11/1976 tại Hội trường Thống Nhất; mở rộng cải tạo XHCN xuống miền Nam.",
+   cause:"\"Kinh tế quốc doanh giữ địa vị lãnh đạo\", đưa tư bản \"từng bước lên CNXH thông qua cải tạo\".",
+   dec:"Phó Thủ tướng Nguyễn Duy Trinh ký: nhà nước độc quyền nguyên liệu nhập khẩu và hầu hết hàng thiết yếu, nắm hầu hết xuất nhập khẩu và bán buôn; tư nhân chuyển thành công tư hợp doanh hoặc sang sản xuất.",
+   res:"Nhà nước hóa lưu thông; thu hẹp mạnh khu vực tư nhân miền Nam.",
+   people:["Nguyễn Duy Trinh","Nguyễn Văn Trân"]},
+
+  {id:"e07",era:1,year:1976.95,up:false,icon:"congress",date:"14–20/12/1976",title:"Đại hội Đảng IV: đường lối công nghiệp hóa",
+   ctx:"\"Không khí say sưa vì thắng lợi\". Đảng Lao động đổi tên thành Đảng Cộng sản Việt Nam.",
+   cause:"Tư duy nền tảng (Lê Duẩn): \"Công nghiệp là khâu chủ yếu tạo ra tích lũy\"; quy luật \"ưu tiên phát triển tư liệu sản xuất\".",
+   dec:"Đường lối: \"Ưu tiên phát triển công nghiệp nặng một cách hợp lý trên cơ sở phát triển nông nghiệp và công nghiệp nhẹ\". Thông qua Kế hoạch 5 năm 1976–1980 với chỉ tiêu rất cao; đẩy mạnh hợp tác hóa nông nghiệp toàn quốc.",
+   res:"Đặt nền kinh tế kiệt quệ, thiếu tích lũy nội bộ vào mô hình đầu tư công nghiệp nặng vượt quá khả năng, lệ thuộc viện trợ. Là gốc rễ của cuộc khủng hoảng những năm sau.",
+   people:["Lê Duẩn","Trường Chinh","Phạm Văn Đồng","Võ Văn Kiệt","Đỗ Mười"]},
+
+  {id:"e08",era:2,year:1977.30,up:true,icon:"doc",date:"12/4/1977",title:"Quyết định 100-CP về cải tạo thương nghiệp",
+   ctx:"Cơ sở pháp lý cho cải tạo \"thương nghiệp tư bản chủ nghĩa\". Long An sớm \"phá rào\" khi mua–bán theo giá thị trường rồi bị Phó Thủ tướng Phạm Hùng buộc dừng.",
+   cause:"Nhằm \"xây dựng nền thương nghiệp XHCN\", \"chấm dứt kinh doanh thương nghiệp của các nhà tư sản\".",
+   dec:"Chuyển các nhà tư sản thương nghiệp sang sản xuất; mở rộng độc quyền thương nghiệp quốc doanh.",
+   res:"Tín hiệu sớm của xung đột giữa cơ chế cứng và thực tiễn (vụ Long An).",
+   people:["Phạm Hùng","Bộ Nội thương"]},
+
+  {id:"e09",era:2,year:1978.22,up:false,icon:"seize",date:"23/3/1978",title:"Cải tạo tư doanh miền Nam đợt lớn (Đỗ Mười)",
+   ctx:"Đầu 1978 Hà Nội phát hiện Bắc Kinh hậu thuẫn Pol Pot; cộng đồng >1,2 triệu người Hoa (Chợ Lớn ~500.000) bị xem là nguy cơ \"đội quân thứ năm\".",
+   cause:"Nguyên nhân kép: cải tạo ý thức hệ và biện pháp an ninh – chính trị (chỉ đạo Lê Duẩn: \"cấm người Hoa kinh doanh buôn bán\").",
+   dec:"Lê Duẩn đưa Đỗ Mười vào thay Nguyễn Văn Linh, cải tạo \"với bàn tay sắt\". Cải tạo 3.560 cơ sở công nghiệp; chuyển 5.000 tư sản thương nghiệp và 9 vạn tiểu thương sang sản xuất; nhà nước nắm 100% năng lượng, giấy, bia–thuốc lá, 60% dệt…",
+   res:"Phá vỡ mạng lưới phân phối tư nhân; châm ngòi \"Nạn Kiều\" và làn sóng vượt biên; lưu thông hàng hóa miền Nam tê liệt.",
+   people:["Đỗ Mười","Nguyễn Văn Linh","Trần Phương","Mai Chí Thọ","Võ Văn Kiệt"]},
+
+  {id:"e10",era:2,year:1978.37,up:true,icon:"money",date:"Tháng 5/1978",title:"Đổi tiền lần 2 – thống nhất tiền tệ toàn quốc",
+   ctx:"Hợp nhất tiền tệ hai miền sau khi thống nhất nhà nước.",
+   cause:"Vừa thống nhất tiền tệ, vừa tiếp tục là công cụ \"đánh\" tích lũy tư nhân.",
+   dec:"Thống nhất một đồng tiền chung; mỗi hộ chỉ được đổi một hạn mức.",
+   res:"Lại gây tổn thất và xói mòn lòng tin trong dân.",
+   people:["Ngân hàng Nhà nước"]},
+
+  {id:"e11",era:2,year:1978.50,up:false,icon:"globe",date:"Tháng 6/1978",title:"Gia nhập Hội đồng Tương trợ Kinh tế (COMECON)",
+   ctx:"Quan hệ với Trung Quốc xấu đi; Mỹ duy trì cấm vận; đàm phán bình thường hóa Việt–Mỹ đổ vỡ.",
+   cause:"Lựa chọn ngả hẳn về khối XHCN do Liên Xô đứng đầu.",
+   dec:"Việt Nam trở thành thành viên COMECON.",
+   res:"Nền kinh tế bị \"khóa\" vào khối XHCN, gắn chặt với viện trợ Liên Xô và mạng lưới thương mại nội khối.",
+   people:["Lê Duẩn","Nguyễn Cơ Thạch"]},
+
+  {id:"e12",era:2,year:1978.84,up:true,icon:"treaty",date:"3/11/1978",title:"Hiệp ước Hữu nghị & Hợp tác Việt – Xô",
+   ctx:"Chuẩn bị cho tình huống chiến tranh với Trung Quốc; cần chỗ dựa chiến lược.",
+   cause:"Củng cố liên minh với Liên Xô trong bối cảnh đối đầu Trung Quốc và Khmer Đỏ.",
+   dec:"Ký Hiệp ước Hữu nghị và Hợp tác toàn diện với Liên Xô.",
+   res:"Theo Kimura: tích lũy vốn \"gần như toàn bộ\" đến từ Liên Xô (~12,7% thu nhập quốc dân); thâm hụt thương mại ~1,0–1,2 tỷ USD/năm; tiết kiệm trong nước âm hoặc bằng không.",
+   people:["Lê Duẩn","Lê Đức Thọ"]},
+
+  {id:"e13",era:3,year:1979.12,up:true,icon:"war",date:"2/1979",title:"Chiến tranh biên giới hai đầu đất nước",
+   ctx:"Đưa quân vào Campuchia (cuối 1978–đầu 1979) chống Khmer Đỏ; Trung Quốc tấn công biên giới phía Bắc (2/1979), sau đó là chiến sự dằng dai tới 1989.",
+   cause:"Đối đầu với cả Trung Quốc lẫn Khmer Đỏ; thế cô lập quốc tế.",
+   dec:"Tổng động viên, dồn nguồn lực cho quốc phòng.",
+   res:"Quân thường trực phình lên ~1,6 triệu; chi quốc phòng khổng lồ; nguồn lực bị hút khỏi sản xuất; chịu cấm vận của cả phương Tây lẫn Trung Quốc.",
+   people:["Bộ Chính trị","Lê Đức Anh"]},
+
+  {id:"e14",era:3,year:1979.68,up:false,icon:"bulb",date:"Tháng 8–9/1979",title:"Hội nghị TƯ 6 (khóa IV): \"bung ra\" – bước đột phá đầu tiên",
+   ctx:"Cuối 1978–đầu 1979 hầu hết địa phương cực kỳ khó khăn; dự trữ lương thực TP.HCM có lúc chỉ đủ vài ngày. Thông báo 10 (18/5/1979) thừa nhận \"những ý kiến bị quy là sai lầm nay cần được lắng nghe\".",
+   cause:"Tác động bên ngoài: hơn 1.000 cán bộ được chuyên gia Liên Xô giảng về NEP của Lenin, cấp \"cơ sở lý luận\" để nới lỏng mà không bị quy là phản bội CNXH (\"bước lùi tạm thời\").",
+   dec:"Thừa nhận khó khăn do \"khuyết điểm chủ quan\"; chủ trương \"làm cho sản xuất bung ra\"; mở rộng quyền chủ động cho địa phương; cho địa phương \"được mua bán với nhau và quyết định giá\".",
+   res:"Cú \"cởi trói\" đầu tiên. Năng suất 1980–84 hồi phục (thu nhập quốc dân +2,3%/năm so với −0,8% trước đó – Kimura). Mở đường hợp thức hóa \"xé rào\".",
+   people:["Lê Duẩn","Võ Văn Kiệt","Nguyễn Lam"]},
+
+  {id:"e15",era:4,year:1980.48,up:true,icon:"scale",date:"1980",title:"Bù giá vào lương (Long An)",
+   ctx:"Lương thực tế kiệt quệ; chênh lệch giá tem phiếu và giá thị trường cao gấp hàng chục lần (ví dụ thịt heo 3 đồng vs 70 đồng/kg).",
+   cause:"Thay vì duy trì hai giá phi lý, trả thẳng phần chênh lệch bằng tiền để viên chức tự ra chợ mua.",
+   dec:"Long An áp dụng \"bù giá vào lương\" và mua nông sản theo giá khuyến khích (heo con 6,5–7,5 đồng/kg). Thường vụ Tỉnh ủy họp 26/6/1980.",
+   res:"Nông dân tự giao hàng cho nhà nước, chất lượng tốt hơn; mô hình trở thành hình mẫu cho cải cách Giá–Lương–Tiền sau này.",
+   people:["Nguyễn Văn Chính (Chín Cần)","Bùi Văn Giao"]},
+
+  {id:"e16",era:4,year:1980.96,up:false,icon:"doc",date:"18/12/1980",title:"Hiến pháp 1980",
+   ctx:"Ban hành ngay khi mô hình kế hoạch hóa tập trung đang lộ rõ khủng hoảng.",
+   cause:"Thể chế hóa mô hình XHCN tập trung và chế độ làm chủ tập thể.",
+   dec:"Hiến định hai hình thức sở hữu (toàn dân & tập thể), kế hoạch hóa tập trung.",
+   res:"Củng cố về pháp lý mô hình mà thực tiễn đang dần bác bỏ.",
+   people:["Quốc hội khóa VI"]},
+
+  {id:"e17",era:4,year:1981.03,up:true,icon:"rice",date:"13/1/1981",title:"Chỉ thị 100 (Khoán 100)",
+   ctx:"Hợp tác xã quy mô lớn gây \"dong công phóng điểm\"; nông dân Đoàn Xá (Hải Phòng) thà đi ăn xin chứ không làm ruộng HTX. Tiền lệ \"Khoán Kim Ngọc\" (1966) từng bị dập tắt.",
+   cause:"Khoán \"chưa đụng đến chế độ sở hữu tập thể về tư liệu sản xuất\" (Trần Đức Nguyên) nên được chấp nhận; Lê Đức Thọ xem là \"một bước lùi để tiến\".",
+   dec:"Ban Bí thư ra Chỉ thị 100-CT/TW: \"khoán sản phẩm cuối cùng đến nhóm và người lao động\" – né chữ \"khoán hộ\".",
+   res:"Khôi phục động lực sản xuất, sản lượng lương thực tăng. Nhưng cải cách nửa vời (vẫn giao nộp định mức), về sau bị \"tái bao cấp\" khiến động lực cạn dần.",
+   people:["Kim Ngọc","Đoàn Duy Thành","Bùi Quang Tạo","Võ Chí Công","Lê Thanh Nghị"]},
+
+  {id:"e18",era:4,year:1981.10,up:false,icon:"factory",date:"21/1/1981",title:"Quyết định 25-CP & 26-CP (công nghiệp)",
+   ctx:"Xí nghiệp quốc doanh đình đốn vì thiếu vật tư; TP.HCM đã \"xé rào\" với \"kế hoạch ba phần\" và \"ba lợi ích\".",
+   cause:"Cho xí nghiệp một phần quyền chủ động ngoài kế hoạch pháp lệnh để tự cứu.",
+   dec:"Thể chế hóa cấp quốc gia mô hình \"kế hoạch ba phần\" và chế độ tiền thưởng.",
+   res:"Cùng Khoán 100 tạo nên giai đoạn \"kinh tế kế hoạch có điều chỉnh\" (Modified Planned Economy, 1980–88). Cuối 1981 Võ Văn Kiệt ra Hà Nội làm Chủ nhiệm Ủy ban Kế hoạch Nhà nước.",
+   people:["Võ Văn Kiệt","Nguyễn Thị Đồng (Dệt Thành Công)"]},
+
+  {id:"e19",era:5,year:1982.24,up:true,icon:"congress",date:"27–31/3/1982",title:"Đại hội Đảng V: điều chỉnh nửa vời",
+   ctx:"Kế hoạch 5 năm 1976–80 thất bại (Kimura: trạng thái \"tăng trưởng bằng không\"); lạm phát, thiếu hụt, thâm hụt trầm trọng.",
+   cause:"Buộc phải điều chỉnh cơ cấu đầu tư nhưng chưa từ bỏ mô hình.",
+   dec:"Coi nông nghiệp là \"mặt trận hàng đầu\", chú trọng hơn hàng tiêu dùng; song vẫn giữ kế hoạch hóa tập trung và tiếp tục \"cải tạo XHCN\".",
+   res:"Mâu thuẫn nội tại: vừa cho khoán/xé rào, vừa cảnh báo \"cải tạo bị buông lỏng\" (Nghị quyết 19, TP.HCM, 3/1983).",
+   people:["Lê Duẩn","Võ Văn Kiệt","Đỗ Mười","Lê Đức Anh"]},
+
+  {id:"e20",era:6,year:1983.55,up:false,icon:"bulb",date:"Tháng 7/1983",title:"Hội nghị Đà Lạt",
+   ctx:"Trường Chinh – nhân vật bảo thủ, kiên định Marx-Lenin – bắt đầu đi cơ sở nhiều hơn theo gợi ý của Võ Văn Kiệt (từ sau HN TƯ 6/1979).",
+   cause:"Lắng nghe trực tiếp các \"điển hình xé rào\" để hiểu nghịch lý cơ chế: được giao kế hoạch nhưng không được cân đối vật tư, phải tự xoay xở rồi lại bị \"đòi thanh tra, đòi bắt\".",
+   dec:"Nghe các giám đốc xé rào TP.HCM báo cáo (Viso, Thuốc lá Vĩnh Hội, Dệt Việt Thắng, Dược 2-9, Phan Văn Khải).",
+   res:"Bước ngoặt tư tưởng: Trường Chinh – với uy tín lý luận lớn nhất – trở thành \"ngọn cờ\" của đổi mới; lập nhóm tư vấn cấp tiến (Hà Nghiệp, Trần Đức Nguyên…).",
+   people:["Trường Chinh","Nguyễn Văn Linh","Võ Văn Kiệt","Hà Nghiệp","Trần Đức Nguyên"]},
+
+  {id:"e21",era:6,year:1984.50,up:true,icon:"bulb",date:"3–10/7/1984",title:"Hội nghị TƯ 6 (khóa V): \"chọc thủng thành trì bao cấp\"",
+   ctx:"Tư duy đổi mới của Trường Chinh chín dần sau hàng loạt chuyến khảo sát (Đắk Lắk, Lâm Đồng, Long An, Vũng Tàu–Côn Đảo).",
+   cause:"Đối chiếu thực tiễn \"bù giá vào lương\" và \"khoán\" với lý luận NEP.",
+   dec:"Trường Chinh tung ra kết quả nghiên cứu, tạo \"khoảng cách khá lớn\" với báo cáo nặng kế hoạch hóa của Lê Duẩn.",
+   res:"Đặt nền cho việc đưa Giá–Lương–Tiền thành \"khâu đột phá\"; Hội nghị ngành dệt Phước Long (4/1984) cho hàng chục giám đốc nói thẳng bế tắc trước Hội đồng Bộ trưởng.",
+   people:["Trường Chinh","Lê Duẩn","Võ Văn Kiệt"]},
+
+  {id:"e22",era:6,year:1984.95,up:false,icon:"doc",date:"10–17/12/1984",title:"Hội nghị TƯ 7 (khóa V)",
+   ctx:"Sau khi thử \"bù giá vào lương\" cho kết quả tích cực bất ngờ ở nhiều địa phương.",
+   cause:"Niềm tin rằng phải dứt khoát bỏ cơ chế quan liêu bao cấp.",
+   dec:"Trường Chinh kêu gọi \"dứt khoát bãi bỏ cơ chế quan liêu bao cấp… không một chút gì đáng luyến tiếc\"; lập Tiểu ban nghiên cứu Giá–Lương–Tiền.",
+   res:"Chuẩn bị đề án cho Hội nghị TƯ 8 – mở màn cuộc tổng điều chỉnh 1985.",
+   people:["Trường Chinh","Trần Phương"]},
+
+  {id:"e23",era:7,year:1985.45,up:true,icon:"scale",date:"Tháng 6/1985",title:"Hội nghị TƯ 8: Giá–Lương–Tiền là \"khâu đột phá\"",
+   ctx:"Lương thực tế \"chỉ đủ sống 10 ngày\"; hệ thống hai giá chênh hàng chục lần làm ngân sách kiệt quệ.",
+   cause:"Coi giải quyết giá–lương–tiền là then chốt để chuyển sang \"hạch toán kinh doanh XHCN\".",
+   dec:"Nghị quyết 28 (10/8/1985): nâng giá mua thóc lên 25–28 đồng/kg, lương tối thiểu 2.200 đồng/tháng → kéo giá vật tư tăng ~10 lần. Sai lầm thiết kế: bán vật tư bằng 70% giá thị trường nhưng mua nông sản 100%; tăng lương tối thiểu 100% dù ngân sách trống.",
+   res:"Hai quyết định này \"đã dẫn tới lạm phát\". Trần Phương phản đối tăng lương 100% nhưng Võ Chí Công vẫn quyết.",
+   people:["Trường Chinh","Trần Phương","Võ Chí Công","Phạm Văn Đồng"]},
+
+  {id:"e24",era:7,year:1985.70,up:false,icon:"money",date:"14/9/1985",title:"Đổi tiền lần 3 – siêu lạm phát",
+   ctx:"Mức giá mới đòi ~120 tỷ đồng lưu thông nhưng chỉ có ~60 tỷ. Tận dụng 12 tỷ tiền mới in từ Đông Đức.",
+   cause:"Thay vì in thêm, nâng mệnh giá lên 10 lần (1 đồng mới = 10 đồng cũ) rồi đổi tiền. Trường Chinh phản đối (thư 29/8) nhưng vẫn buộc phải ký sắc lệnh (3/9).",
+   dec:"Phạm Văn Đồng ký QĐ 13/9/1985: mỗi hộ chỉ được đổi ngay tối đa 2.000 đồng mới.",
+   res:"Siêu lạm phát: chỉ số giá bán lẻ thị trường tự do 1986 tăng 587,2% so với 1985 (Huy Đức; nguồn khác ~774%). Thiếu tiền lẻ, sản xuất đình đốn, niềm tin sụp đổ.",
+   people:["Phạm Văn Đồng","Trường Chinh","Võ Văn Kiệt"]},
+
+  {id:"e25",era:7,year:1985.95,up:true,icon:"mic",date:"Tháng 12/1985",title:"\"Nã pháo vào Giá–Lương–Tiền\" (Quốc hội)",
+   ctx:"Kỳ họp thứ 10 Quốc hội khóa VII; bất mãn xã hội lan rộng sau đổi tiền.",
+   cause:"Đại biểu quyết định \"đem ý dân gửi cho Đảng\".",
+   dec:"Đại biểu Đào Thị Biểu (bà Sáu Trầu, đoàn Cửu Long) chất vấn công khai: \"Mười năm qua chưa lần nào dân xôn xao, bất bình, thậm chí phẫn nộ bằng đợt phá giá–lương–tiền vừa qua\".",
+   res:"Áp lực chính trị buộc phải thay đổi căn bản; HN TƯ 9 (12/1985) bắt đầu cuộc tranh luận quy trách nhiệm, dẫn tới Đại hội VI.",
+   people:["Đào Thị Biểu (bà Sáu Trầu)","Trường Chinh"]},
+
+  {id:"e26",era:8,year:1986.52,up:false,icon:"portrait",date:"10/7/1986",title:"Lê Duẩn qua đời · Trường Chinh quyền Tổng Bí thư",
+   ctx:"Một ngày trước (9/7), Bộ Chính trị ra Nghị quyết 32 về giải pháp chính trị cho Campuchia và bình thường hóa với Trung Quốc – gắn việc thoát cô lập đối ngoại với cải cách trong nước.",
+   cause:"Khoảng trống quyền lực mở đường cho khuynh hướng đổi mới.",
+   dec:"Trường Chinh quyền TBT (14/7); miễn nhiệm cán bộ liên đới vụ Giá–Lương–Tiền (Trần Phương, Trần Quỳnh); thay Tổ Biên tập Báo cáo Chính trị (Hoàng Tùng, Hà Nghiệp, Trần Đức Nguyên).",
+   res:"Khép lại 26 năm Lê Duẩn là \"nhà thiết kế chính\" của mô hình; mở ra giai đoạn soạn thảo \"Tuyên ngôn đổi mới\".",
+   people:["Lê Duẩn","Trường Chinh","Hoàng Tùng","Trần Đức Nguyên"]},
+
+  {id:"e27",era:8,year:1986.70,up:true,icon:"treaty",date:"8 & 11/1986",title:"Trường Chinh gặp Gorbachev",
+   ctx:"Theo lệ, đường lối đại hội phải được Liên Xô \"đồng tình\". Viện trợ Liên Xô bắt đầu bị cắt giảm dưới thời Gorbachev.",
+   cause:"Tìm \"đèn xanh\" ý thức hệ của Moscow cho công cuộc cải cách.",
+   dec:"Trường Chinh đi Moscow (12/8 và 12/11/1986).",
+   res:"Gorbachev đánh giá dự định cải cách của Việt Nam là \"sáng tạo\", \"có những điều các đồng chí đi xa hơn cả chúng tôi\". Áp lực bên ngoài (cắt viện trợ) cộng hưởng với khủng hoảng bên trong, dồn Việt Nam tới đổi mới.",
+   people:["Trường Chinh","M. Gorbachev","Hà Nghiệp"]},
+
+  {id:"e28",era:8,year:1986.96,up:false,icon:"bulb",date:"15–18/12/1986",title:"Đại hội Đảng VI: Tuyên ngôn Đổi Mới",
+   ctx:"Đỉnh điểm của quá trình \"thực tiễn đi trước, lý luận theo sau\". Khủng hoảng kinh tế và siêu lạm phát buộc thay đổi căn bản.",
+   cause:"Phương châm \"nhìn thẳng vào sự thật\"; thừa nhận sai lầm \"tả khuynh, ấu trĩ, duy ý chí, làm trái quy luật khách quan\".",
+   dec:"Chấp nhận nền kinh tế hàng hóa nhiều thành phần; đổi mới cơ cấu kinh tế, cơ chế quản lý. Trường Chinh: \"có thể bỏ qua tư bản chủ nghĩa… nhưng dứt khoát không thể bỏ qua sản xuất hàng hóa\".",
+   res:"Nguyễn Văn Linh làm Tổng Bí thư; mở ra thời kỳ Đổi Mới. \"Thành công về đường lối\" (Hà Nghiệp).",
+   people:["Nguyễn Văn Linh","Trường Chinh","Phạm Văn Đồng","Hà Đăng","Trần Đức Nguyên"]},
+];
+
+/* ----------  MỨC ĐỘ QUAN TRỌNG (semantic zoom)  ----------
+   1 = Mốc chính (luôn hiện, kể cả khi thu nhỏ tối đa)
+   2 = Quan trọng (hiện ở mức phóng trung bình)
+   3 = Đầy đủ (chỉ hiện khi phóng to)                                */
+const TIER={
+  e01:1, e02:3, e03:2, e04:3, e05:3, e06:3, e07:1, e08:3, e09:2, e10:3,
+  e11:3, e12:2, e13:2, e14:1, e15:2, e16:3, e17:1, e18:3, e19:2, e20:2,
+  e21:3, e22:3, e23:2, e24:1, e25:3, e26:2, e27:2, e28:1
+};
+
+/* ----------  CẤU HÌNH TRỤC  ---------- */
+const Y0=1975, Y1=1987;
+const pct = y => ((y-Y0)/(Y1-Y0))*100;
+function iconSVG(key, cls){
+  return `<svg class="${cls||''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[key]||ICONS.doc}</svg>`;
+}
+
+/* ----------  DỰNG GIAO DIỆN  ---------- */
+const canvas = document.getElementById('canvas');
+const viewport = document.getElementById('viewport');
+
+function buildLegend(){
+  const L = document.getElementById('legend');
+  ERAS.forEach((e,i)=>{
+    const c = document.createElement('button');
+    c.className='chip';
+    c.innerHTML=`<span class="dot" style="background:${e.hex}"></span>${e.name}`;
+    c.onclick=()=>zoomToEra(i);
+    L.appendChild(c);
+  });
+}
+
+function buildCanvas(){
+  canvas.innerHTML='';
+  // era bands + tags
+  ERAS.forEach(e=>{
+    const b=document.createElement('div');
+    b.className='era-band';
+    b.style.left=pct(e.span[0])+'%';
+    b.style.width=(pct(e.span[1])-pct(e.span[0]))+'%';
+    b.style.background=e.hex;
+    canvas.appendChild(b);
+    const t=document.createElement('div');
+    t.className='era-tag';
+    t.style.left='calc('+pct(e.span[0])+'% + 6px)';
+    t.style.background=e.hex;
+    t.textContent=e.short;
+    canvas.appendChild(t);
+  });
+  // spine
+  const spine=document.createElement('div'); spine.className='spine'; canvas.appendChild(spine);
+  // year ticks
+  for(let y=1975;y<=1986;y++){
+    const tk=document.createElement('div'); tk.className='axis-tick'; tk.style.left=pct(y)+'%'; canvas.appendChild(tk);
+    const yl=document.createElement('div'); yl.className='axis-year'; yl.style.left=pct(y)+'%'; yl.textContent=y; canvas.appendChild(yl);
+  }
+  // events
+  EVENTS.forEach((ev,idx)=>{
+    const era=ERAS[ev.era];
+    const tier=TIER[ev.id]||3;
+    const node=document.createElement('div');
+    node.className='ev '+(ev.up?'up':'down')+(tier===1?' tier1':'');
+    node.dataset.tier=tier;
+    node.style.left=pct(ev.year)+'%';
+    // vertical placement: up => card above spine, down => below
+    const cardTop = ev.up ? 20 : 318;
+    const stemTop = ev.up ? 150 : 281;
+    const stemH   = ev.up ? 131 : 36;
+    const starHtml = tier===1 ? `<div class="star" style="background:${era.hex}">★ Mốc chính</div>` : '';
+    node.style.top='0px';
+    node.innerHTML=`
+      <div class="stem" style="top:${stemTop}px;height:${stemH}px;background:${era.hex};opacity:.45"></div>
+      <div class="dot" style="top:279px;border-color:${era.hex}"></div>
+      <div class="card" style="position:absolute;top:${cardTop}px;left:50%;transform:translateX(-50%);width:100%">
+        ${starHtml}
+        <div class="ic" style="color:${era.hex}">${iconSVG(ev.icon)}</div>
+        <div class="date" style="color:${era.hex}">${ev.date}</div>
+        <div class="etitle">${ev.title}</div>
+        <div class="tap">▸ nhấp xem chi tiết</div>
+      </div>`;
+    const card=node.querySelector('.card');
+    card.style.setProperty('--c0',era.hex);
+    card.onclick=()=>openModal(idx);
+    node.querySelector('.dot').onclick=(e)=>{e.stopPropagation();openModal(idx);};
+    canvas.appendChild(node);
+  });
+}
+
+/* ----------  THU PHÓNG  ---------- */
+const MINW=()=>Math.max(viewport.clientWidth-80, 700); // fit
+const MAXW=7200;
+let curW=2600;
+const slider=document.getElementById('zoomSlider');
+const readout=document.getElementById('zoomReadout');
+const lodReadout=document.getElementById('lodReadout');
+
+/* Semantic zoom: hiện/ẩn sự kiện theo mức độ quan trọng dựa trên mức phóng.
+   Ngưỡng tính theo tỉ lệ curW / chiều rộng vừa khít (MINW) nên ổn định
+   trên mọi kích thước màn hình. */
+const LOD_T2 = 1.45;   // từ tỉ lệ này: hiện thêm tier 2 (Quan trọng)
+const LOD_T3 = 2.45;   // từ tỉ lệ này: hiện thêm tier 3 (Đầy đủ)
+function updateLOD(){
+  const r = curW / MINW();
+  const level = r >= LOD_T3 ? 3 : (r >= LOD_T2 ? 2 : 1);
+  document.querySelectorAll('.ev').forEach(n=>{
+    n.classList.toggle('lod-hidden', (+n.dataset.tier) > level);
+  });
+  if(lodReadout){
+    lodReadout.textContent = level===3 ? 'Đầy đủ' : (level===2 ? 'Quan trọng' : 'Mốc chính');
+  }
+}
+
+function applyWidth(w, keepCenterRatio){
+  const minw=MINW();
+  w=Math.max(minw,Math.min(MAXW,w));
+  // preserve scroll center
+  const prevCenter = (viewport.scrollLeft + viewport.clientWidth/2) / (canvas.offsetWidth||w);
+  curW=w;
+  canvas.style.width=w+'px';
+  // slider value
+  const v = Math.round(((w-minw)/(MAXW-minw))*100);
+  slider.value=v;
+  readout.textContent=(w/2600).toFixed(1)+'×';
+  updateLOD();
+  if(keepCenterRatio!=null){
+    requestAnimationFrame(()=>{ viewport.scrollLeft = keepCenterRatio*w - viewport.clientWidth/2; });
+  } else {
+    requestAnimationFrame(()=>{ viewport.scrollLeft = prevCenter*w - viewport.clientWidth/2; });
+  }
+}
+slider.addEventListener('input',()=>{
+  const minw=MINW();
+  applyWidth(minw + (slider.value/100)*(MAXW-minw));
+});
+document.getElementById('zoomIn').onclick=()=>applyWidth(curW*1.3);
+document.getElementById('zoomOut').onclick=()=>applyWidth(curW/1.3);
+document.getElementById('fitBtn').onclick=()=>{applyWidth(MINW());viewport.scrollLeft=0;};
+
+function zoomToEra(i){
+  const e=ERAS[i];
+  const spanFrac=(e.span[1]-e.span[0])/(Y1-Y0);
+  // make this era fill ~78% of viewport
+  let w = (viewport.clientWidth*0.78)/spanFrac;
+  w=Math.max(MINW(),Math.min(MAXW,w));
+  const centerRatio=(pct(e.span[0])+pct(e.span[1]))/200;
+  applyWidth(w, centerRatio);
+}
+let curEraView=0;
+document.getElementById('nextEra').onclick=()=>{curEraView=(curEraView+1)%ERAS.length;zoomToEra(curEraView);};
+document.getElementById('prevEra').onclick=()=>{curEraView=(curEraView-1+ERAS.length)%ERAS.length;zoomToEra(curEraView);};
+
+/* wheel zoom (ctrl) + horizontal scroll */
+viewport.addEventListener('wheel',(e)=>{
+  if(e.ctrlKey||e.metaKey){ e.preventDefault(); applyWidth(curW*(e.deltaY<0?1.12:0.89)); }
+  else if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ viewport.scrollLeft+=e.deltaY; e.preventDefault(); }
+},{passive:false});
+
+/* drag to pan */
+let dragging=false,sx=0,sl=0;
+viewport.addEventListener('mousedown',(e)=>{
+  if(e.target.closest('.card')||e.target.closest('.dot')||e.target.closest('.chip'))return;
+  dragging=true;sx=e.pageX;sl=viewport.scrollLeft;viewport.classList.add('drag');
+});
+window.addEventListener('mousemove',(e)=>{if(dragging){viewport.scrollLeft=sl-(e.pageX-sx);}});
+window.addEventListener('mouseup',()=>{dragging=false;viewport.classList.remove('drag');});
+
+/* ----------  MODAL  ---------- */
+const overlay=document.getElementById('overlay');
+let curEv=0;
+function openModal(idx){
+  curEv=idx; const ev=EVENTS[idx]; const era=ERAS[ev.era];
+  document.getElementById('mBand').style.background=era.hex;
+  const badge=document.getElementById('mEra');
+  badge.style.background=era.hex; badge.textContent=era.name;
+  document.getElementById('mTitle').textContent=ev.title;
+  document.getElementById('mDate').textContent=ev.date;
+  const ic=document.getElementById('mIcon'); ic.style.background=era.hex; ic.innerHTML=iconSVG(ev.icon);
+  document.getElementById('mCtx').textContent=ev.ctx;
+  document.getElementById('mCause').textContent=ev.cause;
+  document.getElementById('mDec').textContent=ev.dec;
+  document.getElementById('mRes').textContent=ev.res;
+  const p=document.getElementById('mPeople'); p.innerHTML='';
+  ev.people.forEach(n=>{const s=document.createElement('span');s.className='ptag';s.textContent=n;p.appendChild(s);});
+  // colorize block accents
+  document.querySelectorAll('.block h3, .block h3 .bar').forEach(el=>{
+    if(el.classList.contains('bar')) el.style.background=era.hex; else el.style.color=era.hex;
+  });
+  // optional photo: images/<id>.jpg|png
+  const ph=document.getElementById('mPhoto');
+  ph.classList.remove('show');
+  const tryExt=['jpg','jpeg','png','webp']; let ei=0;
+  ph.onerror=()=>{ ei++; if(ei<tryExt.length){ph.src='images/'+ev.id+'.'+tryExt[ei];} else {ph.classList.remove('show');} };
+  ph.onload=()=>ph.classList.add('show');
+  ph.src='images/'+ev.id+'.'+tryExt[0];
+  overlay.classList.add('open');
+}
+function closeModal(){overlay.classList.remove('open');}
+document.getElementById('closeBtn').onclick=closeModal;
+overlay.addEventListener('click',(e)=>{if(e.target===overlay)closeModal();});
+document.getElementById('mNext').onclick=()=>openModal((curEv+1)%EVENTS.length);
+document.getElementById('mPrev').onclick=()=>openModal((curEv-1+EVENTS.length)%EVENTS.length);
+window.addEventListener('keydown',(e)=>{
+  if(!overlay.classList.contains('open'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowRight')openModal((curEv+1)%EVENTS.length);
+  if(e.key==='ArrowLeft')openModal((curEv-1+EVENTS.length)%EVENTS.length);
+});
+
+/* ----------  KHỞI TẠO  ---------- */
+buildLegend();
+buildCanvas();
+applyWidth(2600);
+window.addEventListener('resize',()=>{ if(curW<MINW()) applyWidth(MINW()); });
+</script>
+</body>
+</html>
