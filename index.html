@@ -211,16 +211,86 @@
     input[type=range]{width:110px;}
     .media{flex-wrap:wrap;}
   }
+
+  /* ===== MODE SWITCHING ===== */
+  .mode-toggle{position:absolute;top:16px;right:clamp(12px,4vw,40px);
+    font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink2);
+    padding:8px 14px;border-radius:999px;transition:.16s;z-index:6;box-shadow:var(--shadow);}
+  .mode-toggle:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+  #mobileWrap{display:none;}
+  body.mode-mobile #desktopWrap{display:none;}
+  body.mode-mobile #mobileWrap{display:block;}
+  body.mode-mobile .masthead{padding-top:60px;}
+  body.mode-mobile .subtitle{font-size:.9rem;}
+
+  /* ===== MOBILE CONTROLS ===== */
+  .m-controls{position:sticky;top:0;z-index:30;background:var(--paper2);
+    border-bottom:1px solid var(--line);box-shadow:0 6px 16px rgba(60,40,12,.10);
+    padding:10px clamp(12px,4vw,20px);backdrop-filter:blur(2px);}
+  .m-seg{display:flex;align-items:center;gap:6px;}
+  .m-seg-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:700;flex:none;width:46px;line-height:1.1;}
+  .m-seg button{flex:1;font-family:inherit;font-size:.76rem;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:9px 4px;border-radius:9px;transition:.16s;}
+  .m-seg button.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:var(--shadow);}
+  .m-chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .m-chips::-webkit-scrollbar{height:0;}
+  .m-chips button{white-space:nowrap;font-family:inherit;font-size:.72rem;font-weight:600;cursor:pointer;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink2);padding:6px 11px;border-radius:999px;
+    display:flex;align-items:center;gap:6px;flex:none;}
+  .m-chips .cdot{width:9px;height:9px;border-radius:50%;flex:none;}
+
+  /* ===== MOBILE TIMELINE ===== */
+  #mobileTimeline{padding:4px clamp(12px,4vw,20px) 34px;position:relative;z-index:1;}
+  .m-era{scroll-margin-top:130px;}
+  .m-era-head{display:flex;align-items:center;gap:10px;font-weight:700;color:#fff;
+    padding:10px 13px;border-radius:11px;margin:20px 0 14px;font-size:.92rem;line-height:1.18;box-shadow:var(--shadow);}
+  .m-era-head .he-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.24);
+    display:grid;place-items:center;font-size:.8rem;flex:none;}
+  .m-events{position:relative;}
+  .m-events::before{content:"";position:absolute;left:18px;top:2px;bottom:2px;width:3px;border-radius:3px;
+    background:var(--linecol,#ccc);opacity:.30;}
+  .m-ev{position:relative;margin:0 0 13px 40px;max-height:340px;overflow:hidden;
+    transition:opacity .34s ease, transform .34s ease, max-height .36s ease, margin .34s ease;}
+  .m-ev.lod-hidden{opacity:0;transform:translateX(-14px);max-height:0;margin-top:0;margin-bottom:0;pointer-events:none;}
+  .m-dot{position:absolute;left:-29px;top:15px;width:15px;height:15px;border-radius:50%;
+    background:var(--paper);border:3px solid;box-shadow:0 0 0 3px var(--paper);}
+  .m-ev.t1 .m-dot{width:19px;height:19px;left:-31px;box-shadow:0 0 0 3px var(--paper),0 0 0 6px rgba(168,30,35,.14);}
+  .m-card{background:var(--paper);border:1px solid var(--line);border-left-width:4px;border-radius:11px;
+    padding:11px 13px;box-shadow:var(--shadow);cursor:pointer;transition:transform .14s, box-shadow .14s;}
+  .m-card:active{transform:scale(.985);box-shadow:var(--shadow-lg);}
+  .m-card .mc-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+  .m-card .mc-ic{width:22px;height:22px;flex:none;}
+  .m-card .mc-date{font-size:.67rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+  .m-card .mc-star{margin-left:auto;font-size:.56rem;font-weight:700;color:#fff;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+  .m-card .mc-title{font-size:.92rem;font-weight:600;line-height:1.3;color:var(--ink);}
+  .m-card .mc-tap{font-size:.65rem;color:var(--ink3);margin-top:6px;}
+
+  /* ===== MODAL AS BOTTOM SHEET ON SMALL SCREENS ===== */
+  @media (max-width:760px){
+    .overlay{align-items:flex-end;padding:0;}
+    .modal{border-radius:18px 18px 0 0;max-height:92vh;width:100%;animation:sheet .3s cubic-bezier(.2,.9,.3,1.1);}
+    @keyframes sheet{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+    .modal h2{font-size:1.28rem;}
+    .modal-head{padding:20px 18px 14px;}
+    .media{padding:14px 18px 2px;}
+    .blocks{padding:12px 18px 4px;}
+    .people{padding:4px 18px 20px;}
+    .modal-nav{padding:0 18px 22px;}
+    .closeb{top:12px;right:12px;}
+  }
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <h1 class="title">Kinh tế Việt Nam 1975–1986<br><em>Đường tới Đổi Mới</em></h1>
-  <p class="subtitle">Dòng thời gian tương tác về quá trình phát triển kinh tế – xã hội, tư duy định hình hệ thống, và những tác động trong–ngoài dẫn tới đường lối Đổi Mới tại Đại hội VI (12/1986). Mỗi sự kiện được tóm lược theo năm chiều: hoàn cảnh, nguyên nhân/tư duy, chính sách/quyết định, hậu quả, và các nhân vật chính.</p>
+  <p class="subtitle">Dòng thời gian kinh tế – xã hội, tư duy định hình hệ thống, và những tác động trong–ngoài dẫn tới đường lối Đổi Mới tại Đại hội VI (12/1986).</p>
   <p class="source-line">Tổng hợp từ: Đặng Phong; Võ Nhân Trí; Trần Văn Thọ et al.; Phạm Minh Chính & Vương Quân Hoàng; Huy Đức; Kimura; Leung & Vo; Fforde & de Vylder.</p>
+  <button class="mode-toggle" id="modeToggle">📱 Chuyển giao diện Điện thoại</button>
 </header>
 
+<div id="desktopWrap">
 <div class="controls">
   <div class="ctrl-group">
     <span class="ctrl-label">Thu phóng</span>
@@ -241,10 +311,24 @@
 </div>
 
 <div class="legend" id="legend"></div>
-<p class="hint">💡 <strong>Khi thu nhỏ, chỉ các mốc lớn nhất (★ Mốc chính) hiển thị; phóng to dần thì các sự kiện chi tiết hơn lần lượt xuất hiện.</strong> · <strong>Kéo</strong> để di chuyển ngang · <strong>cuộn / Ctrl+cuộn</strong> hoặc thanh trượt để thu phóng · <strong>nhấp nút giai đoạn</strong> để phóng vào từng thời kỳ · <strong>nhấp vào mỗi sự kiện</strong> để xem chi tiết · phím <strong>← →</strong> chuyển sự kiện, <strong>Esc</strong> đóng.</p>
+<p class="hint">💡 <strong>Khi thu nhỏ, chỉ các mốc lớn nhất (★ Mốc chính) hiển thị; phóng to dần thì các sự kiện chi tiết hơn lần lượt xuất hiện.</strong></p>
 
 <div class="tl-viewport" id="viewport">
   <div class="tl-canvas" id="canvas"></div>
+</div>
+</div><!-- /desktopWrap -->
+
+<div id="mobileWrap">
+  <div class="m-controls">
+    <div class="m-seg" id="mSeg">
+      <span class="m-seg-label">Mức chi&nbsp;tiết</span>
+      <button data-lvl="1" class="active">★ Mốc chính</button>
+      <button data-lvl="2">Quan trọng</button>
+      <button data-lvl="3">Đầy đủ</button>
+    </div>
+    <div class="m-chips" id="mChips"></div>
+  </div>
+  <div id="mobileTimeline"></div>
 </div>
 
 <div class="overlay" id="overlay">
@@ -315,7 +399,7 @@ const EVENTS = [
    res:"Mở đường áp nguyên xi mô hình miền Bắc lên cả nước; chấm dứt khả năng để miền Nam giữ thời kỳ quá độ nhiều thành phần kinh tế. Khái niệm thận trọng \"bước đi ban đầu\" bị gạt bỏ.",
    people:["Lê Duẩn","Trường Chinh","Lê Đức Thọ","Phạm Hùng","Nguyễn Văn Linh"]},
 
-  {id:"e02",era:0,year:1975.66,up:false,icon:"people",date:"Cuối 8/1975",title:"Chính sách Kinh tế Mới",
+  {id:"e02",era:0,year:1975.66,up:false,icon:"people",date:"Cuối 8/1975",title:"Kinh tế Mới",
    ctx:"Thành thị miền Nam thừa lao động phi nông nghiệp sau khi bộ máy cũ sụp đổ; chính quyền coi \"nền kinh tế do Mỹ để lại chỉ là phồn vinh giả tạo\".",
    cause:"Chủ trương \"phân bố lại lực lượng lao động\", giảm dân thành thị và mở rộng diện tích canh tác.",
    dec:"Đưa dân thành phố \"về quê lập nghiệp\", xây dựng các vùng kinh tế mới (Bình Phước, Tây Ninh, Sóc Trăng…); mục tiêu 1,5 triệu người.",
@@ -469,7 +553,7 @@ const EVENTS = [
    res:"Hai quyết định này \"đã dẫn tới lạm phát\". Trần Phương phản đối tăng lương 100% nhưng Võ Chí Công vẫn quyết.",
    people:["Trường Chinh","Trần Phương","Võ Chí Công","Phạm Văn Đồng"]},
 
-  {id:"e24",era:7,year:1985.70,up:false,icon:"money",date:"14/9/1985",title:"Đổi tiền lần 3 – siêu lạm phát",
+  {id:"e24",era:7,year:1985.70,up:false,icon:"money",date:"14/9/1985",title:"Cải cách Giá-Lương-Tiền",
    ctx:"Mức giá mới đòi ~120 tỷ đồng lưu thông nhưng chỉ có ~60 tỷ. Tận dụng 12 tỷ tiền mới in từ Đông Đức.",
    cause:"Thay vì in thêm, nâng mệnh giá lên 10 lần (1 đồng mới = 10 đồng cũ) rồi đổi tiền. Trường Chinh phản đối (thư 29/8) nhưng vẫn buộc phải ký sắc lệnh (3/9).",
    dec:"Phạm Văn Đồng ký QĐ 13/9/1985: mỗi hộ chỉ được đổi ngay tối đa 2.000 đồng mới.",
@@ -511,7 +595,7 @@ const EVENTS = [
    3 = Đầy đủ (chỉ hiện khi phóng to)                                */
 const TIER={
   e01:1, e02:3, e03:2, e04:3, e05:3, e06:3, e07:1, e08:3, e09:2, e10:3,
-  e11:3, e12:2, e13:2, e14:1, e15:2, e16:3, e17:1, e18:3, e19:2, e20:2,
+  e11:3, e12:2, e13:2, e14:1, e15:2, e16:3, e17:1, e18:3, e19:2, e20:1,
   e21:3, e22:3, e23:2, e24:1, e25:3, e26:2, e27:2, e28:1
 };
 
@@ -713,11 +797,107 @@ window.addEventListener('keydown',(e)=>{
   if(e.key==='ArrowLeft')openModal((curEv-1+EVENTS.length)%EVENTS.length);
 });
 
-/* ----------  KHỞI TẠO  ---------- */
-buildLegend();
-buildCanvas();
-applyWidth(2600);
-window.addEventListener('resize',()=>{ if(curW<MINW()) applyWidth(MINW()); });
+/* ====================  GIAO DIỆN ĐIỆN THOẠI (dọc)  ==================== */
+let mobileLevel=1, mobileBuilt=false;
+function buildMobile(){
+  // chips điều hướng giai đoạn
+  const chips=document.getElementById('mChips'); chips.innerHTML='';
+  ERAS.forEach((e,i)=>{
+    const b=document.createElement('button');
+    b.innerHTML=`<span class="cdot" style="background:${e.hex}"></span>${e.short}`;
+    b.onclick=()=>{const t=document.getElementById('m-era-'+i); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});};
+    chips.appendChild(b);
+  });
+  // các giai đoạn + sự kiện
+  const root=document.getElementById('mobileTimeline'); root.innerHTML='';
+  ERAS.forEach((era,ei)=>{
+    const sec=document.createElement('div'); sec.className='m-era'; sec.id='m-era-'+ei;
+    const head=document.createElement('div'); head.className='m-era-head'; head.style.background=era.hex;
+    head.innerHTML=`<span class="he-num">${ei+1}</span>${era.name}`;
+    sec.appendChild(head);
+    const list=document.createElement('div'); list.className='m-events';
+    list.style.setProperty('--linecol',era.hex);
+    EVENTS.map((ev,idx)=>({ev,idx})).filter(o=>o.ev.era===ei).sort((a,b)=>a.ev.year-b.ev.year).forEach(({ev,idx})=>{
+      const tier=TIER[ev.id]||3;
+      const item=document.createElement('div');
+      item.className='m-ev'+(tier===1?' t1':'');
+      item.dataset.tier=tier;
+      const star = tier===1 ? `<span class="mc-star" style="background:${era.hex}">★ Mốc chính</span>` : '';
+      item.innerHTML=`
+        <span class="m-dot" style="border-color:${era.hex}"></span>
+        <div class="m-card" style="border-left-color:${era.hex}">
+          <div class="mc-top">
+            <span class="mc-ic" style="color:${era.hex}">${iconSVG(ev.icon)}</span>
+            <span class="mc-date" style="color:${era.hex}">${ev.date}</span>
+            ${star}
+          </div>
+          <div class="mc-title">${ev.title}</div>
+          <div class="mc-tap">▸ chạm để xem chi tiết</div>
+        </div>`;
+      item.querySelector('.m-card').onclick=()=>openModal(idx);
+      list.appendChild(item);
+    });
+    sec.appendChild(list);
+    root.appendChild(sec);
+  });
+  mobileBuilt=true;
+  filterMobile();
+}
+function filterMobile(){
+  document.querySelectorAll('#mobileTimeline .m-ev').forEach(n=>{
+    n.classList.toggle('lod-hidden',(+n.dataset.tier)>mobileLevel);
+  });
+}
+document.querySelectorAll('#mSeg button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('#mSeg button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    mobileLevel=+b.dataset.lvl;
+    filterMobile();
+  };
+});
+
+/* ====================  TỰ ĐỘNG CHUYỂN CHẾ ĐỘ  ==================== */
+let desktopBuilt=false, forcedMode=null;
+const MOBILE_BREAKPOINT=820;
+function detectMode(){
+  return window.innerWidth<=MOBILE_BREAKPOINT ? 'mobile' : 'desktop';
+}
+function currentMode(){ return document.body.classList.contains('mode-mobile') ? 'mobile':'desktop'; }
+function updateToggleLabel(){
+  const t=document.getElementById('modeToggle');
+  t.textContent = currentMode()==='mobile' ? '🖥 Chuyển giao diện Máy tính' : '📱 Chuyển giao diện Điện thoại';
+}
+function applyMode(mode){
+  if(mode==='mobile'){
+    document.body.classList.add('mode-mobile');
+    if(!mobileBuilt) buildMobile();
+  } else {
+    document.body.classList.remove('mode-mobile');
+    if(!desktopBuilt){ buildLegend(); buildCanvas(); desktopBuilt=true; }
+    requestAnimationFrame(()=>applyWidth(curW)); // tính lại kích thước khi hiện ra
+  }
+  updateToggleLabel();
+}
+document.getElementById('modeToggle').onclick=()=>{
+  const next = currentMode()==='mobile' ? 'desktop':'mobile';
+  forcedMode=next;                 // người dùng chọn thủ công → khóa tự động
+  applyMode(next);
+};
+let _rT;
+window.addEventListener('resize',()=>{
+  clearTimeout(_rT);
+  _rT=setTimeout(()=>{
+    if(!forcedMode){
+      const m=detectMode();
+      if(m!==currentMode()) applyMode(m);
+    }
+    if(currentMode()==='desktop' && curW<MINW()) applyWidth(MINW());
+  },180);
+});
+
+/* ====================  KHỞI TẠO  ==================== */
+applyMode(detectMode());
 </script>
 </body>
 </html>
